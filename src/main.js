@@ -1,5 +1,6 @@
 import { parseDeck } from './parseDeck.js';
 import { themes, defaultThemeId, resolveTheme } from './themes.js';
+import { saveState, loadState } from './state.js';
 
 const editor = document.getElementById('editor');
 const preview = document.getElementById('preview');
@@ -20,9 +21,23 @@ function applyTheme(id) {
 themeSelect.innerHTML = themes
   .map((theme) => `<option value="${theme.id}">${theme.name}</option>`)
   .join('');
-themeSelect.value = defaultThemeId;
-applyTheme(defaultThemeId);
 
-themeSelect.addEventListener('change', () => applyTheme(themeSelect.value));
-editor.addEventListener('input', render);
+const saved = loadState(localStorage);
+if (saved.content) editor.value = saved.content;
+const initialThemeId = saved.theme ?? defaultThemeId;
+themeSelect.value = initialThemeId;
+applyTheme(initialThemeId);
+
+function persist() {
+  saveState({ content: editor.value, theme: themeSelect.value }, localStorage);
+}
+
+themeSelect.addEventListener('change', () => {
+  applyTheme(themeSelect.value);
+  persist();
+});
+editor.addEventListener('input', () => {
+  render();
+  persist();
+});
 render();
