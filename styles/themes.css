@@ -1,0 +1,55 @@
+/* Theme styles applied via the data-theme attribute set by src/main.js on #preview. */
+
+#preview[data-theme="light"] .slide {
+  background: #ffffff;
+  border-color: #d4d4d8;
+  color: #1a1a1a;
+}
+
+#preview[data-theme="dark"] .slide {
+  background: #1e1e2e;
+  border-color: #313244;
+  color: #e4e4e7;
+}
+
+#preview[data-theme="dark"] .slide-content blockquote {
+  border-left-color: #45475a;
+  color: #a6adc8;
+}
+
+#preview[data-theme="dark"] .slide-content th,
+#preview[data-theme="dark"] .slide-content td {
+  border-color: #313244;
+}
+
+#preview[data-theme="dark"] .slide-content pre {
+  background: #11111b;
+}
+
+#preview[data-theme="dark"] .slide-content a {
+  color: #89b4fa;
+}
+
+#preview[data-theme="accent"] .slide {
+  background: #fff7ed;
+  border-color: #fb923c;
+  color: #431407;
+}
+
+#preview[data-theme="accent"] .slide-content blockquote {
+  border-left-color: #fb923c;
+  color: #9a3412;
+}
+
+#preview[data-theme="accent"] .slide-content th,
+#preview[data-theme="accent"] .slide-content td {
+  border-color: #fdba74;
+}
+
+#preview[data-theme="accent"] .slide-content pre {
+  background: #ffedd5;
+}
+
+#preview[data-theme="accent"] .slide-content a {
+  color: #c2410c;
+}
