@@ -6,6 +6,7 @@
   <title>md-to-slides</title>
   <link rel="stylesheet" href="styles/base.css" />
   <link rel="stylesheet" href="styles/themes.css" />
+  <link rel="stylesheet" href="styles/present.css" />
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/github.min.css"
@@ -32,10 +33,14 @@
       <div class="toolbar" style="display:flex; gap:.5rem; align-items:center; position:sticky; top:0;">
         <label for="theme-select">Theme</label>
         <select id="theme-select"></select>
+        <button id="present-button" type="button">Present</button>
       </div>
       <div id="slides" style="display:flex; flex-direction:column; gap:1.5rem;"></div>
     </div>
   </main>
+  <div id="present">
+    <div class="present-stage"></div>
+  </div>
   <script type="module" src="src/main.js"></script>
 </body>
 </html>
