@@ -1,0 +1,58 @@
+/* Present mode: a fixed 16:9 surface scaled to fit the viewport (letterboxed). */
+
+#present {
+  display: none;
+}
+
+#present.is-presenting {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  z-index: 1000;
+}
+
+/*
+ * The stage is a fixed 16:9 box. width:min(100vw, 177.78vh) caps it by viewport
+ * width or by 16/9 of viewport height, whichever is smaller, so the box always
+ * fits inside the viewport with letterboxing and never overflows.
+ */
+#present .present-stage {
+  width: min(100vw, 177.78vh);
+  height: min(56.25vw, 100vh);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Reuse the same .slide / .slide-content structure, filling the stage. */
+#present .slide {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+#present .slide-content {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Theme colours for the present surface, mirroring the #preview theme palette. */
+#present[data-theme="light"] .slide {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+#present[data-theme="dark"] .slide {
+  background: #1e1e2e;
+  color: #e4e4e7;
+}
+
+#present[data-theme="accent"] .slide {
+  background: #fff7ed;
+  color: #431407;
+}
